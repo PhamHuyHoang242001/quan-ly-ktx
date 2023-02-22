@@ -17,7 +17,7 @@
       $('#' + eventObj.id).modal('show');
       
     },
-    initialDate: '2022-12-15',
+    initialDate: new Date(),
     headerToolbar: {
       left: 'prev,next today',
       center: 'title',
@@ -86,7 +86,7 @@
       eventClick: function(info) {
         var eventObj = info.event;
       },
-      initialDate: '2022-12-15',
+      initialDate: new Date(),
     });
     
     calendar.render();

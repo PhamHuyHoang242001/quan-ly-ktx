@@ -130,7 +130,8 @@ class ManagerController extends Controller
         
         $genders[0]="Nam";
         $genders[1]="Nữ";
-        
+        $room_registrations = RoomRegistration::all();
+        $rooms = Room::all();
         $request->validate([
             'search-sv'=>'required',            
         ]);
@@ -138,8 +139,9 @@ class ManagerController extends Controller
         $sv_info = Profile::where('mssv', 'LIKE','%'.$search_content."%")
         ->orWhere('name', 'LIKE','%'.$search_content."%")
         ->orWhere('quequan', 'LIKE','%'.$search_content."%")
+        ->orWhere('khoa','LIKE','%'.$search_content."%")
         ->orWhere('email', 'LIKE','%'.$search_content."%")->paginate(7);
-        return view('managers.manager_search_sv', compact('sv_info','genders'), ['search_content' => $search_content]);
+        return view('managers.manager_search_sv', compact('sv_info','genders','room_registrations','rooms'), ['search_content' => $search_content]);
     }
 
     public function manager_search_day(Request $request) {

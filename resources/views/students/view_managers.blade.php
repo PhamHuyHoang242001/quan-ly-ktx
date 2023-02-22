@@ -31,13 +31,6 @@
                                 <td>Lê Huy Hùng</td>
                                 <td>hunglh28112001@gmail.com</td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <img src="{{ URL::to('/') }}/uploads/mng.png" alt="" style="width: 70px;">
-                                </td>
-                                <td>Trần Huy Hoàng</td>
-                                <td>hoangth@gmail.com</td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>

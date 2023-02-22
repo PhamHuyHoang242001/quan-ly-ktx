@@ -52,6 +52,7 @@
                                                                     @endforeach
                                                                 @elseif($room_registration->status == 'Đang chờ')
                                                                     {{ 'Đang chờ duyệt' }}
+                                                                @else {{'Chưa đăng ký'}}
                                                                 @endif
                                                         @endif
                                                 @endforeach
