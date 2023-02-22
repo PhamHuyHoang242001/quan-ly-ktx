@@ -10,6 +10,8 @@ use App\Models\Profile;
 use Illuminate\Support\Facades\DB;
 use App\Models\RoomRegistration;
 use Illuminate\Support\Facades\Gate;
+use App\Models\Room;
+use App\Models\Area;
 
 class UsersController extends Controller
 {
@@ -28,9 +30,15 @@ class UsersController extends Controller
             return back();
         }
         $profile = Profile::all();
+        $room_regi = RoomRegistration::all();
+        $room = Room::all();
+        
 
         return view('pages.admin.index')->with([
-            'profiles' => $profile
+            'profiles' => $profile,
+            'room_registrations' => $room_regi,
+            'rooms' => $room
+           
         ])->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
