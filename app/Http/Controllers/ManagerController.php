@@ -56,6 +56,13 @@ class ManagerController extends Controller
     {
         $updated_at = Carbon::now('Asia/Ho_Chi_Minh');
         RoomRegistration::where('mssv', $mssv)->update(['status'=>'Thành công', 'updated_at'=>$updated_at]);
+        $room_id = RoomRegistration::where([
+            ['mssv',$mssv],
+            ['status', '=', 'Thành công']
+        ])->value('room_id');
+        $current_numbers = Room::where('id',$room_id)->value('current_numbers');
+        $current_numbers = $current_numbers + 1;
+        Room::where('id',$room_id)->update(['current_numbers'=>$current_numbers]);
         return redirect()->back();
     }
     public function get_manager_huydk($mssv)
@@ -66,7 +73,7 @@ class ManagerController extends Controller
             ['status', '!=', 'Thành công']
         ])->value('room_id');
         $current_numbers = Room::where('id',$room_id)->value('current_numbers');
-        $current_numbers = $current_numbers - 1;
+        // $current_numbers = $current_numbers - 1;
         RoomRegistration::where([
         ['mssv',$mssv]
         ])->update(['status'=>"Hủy",'updated_at'=>$updated_at]);

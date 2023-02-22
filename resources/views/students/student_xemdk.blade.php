@@ -47,7 +47,12 @@
                                 <td>{{$l->created_at}}</td>
                                 <td>{{$l->updated_at}}</td>
                                 <td>{{$l->cost}}</td>
-                                <td><a href="{{ route('get_student_huydk', $l->mssv) }}"><button class="btn btn-primary">Hủy</button></a></td>
+                                <td>@if($l->status=="Đang chờ")
+                                    <a href="{{ route('get_student_huydk', $l->mssv) }}"><button class="btn btn-primary">Hủy</button></a>
+                                @else 
+                                    <a>Không thể hủy đăng ký</a>
+                                    @endif
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

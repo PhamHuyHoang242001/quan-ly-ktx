@@ -77,15 +77,15 @@ class StudentController extends Controller
                 if($count1==0){
                     $created_at = Carbon::now('Asia/Ho_Chi_Minh');
                     DB::table('room_registrations')->insert(['room_id'=>$id,'mssv'=>$mssv,'name'=>Auth::user()->name, 'status'=>'Đang chờ','cost'=>$area_cost*(13-date('m')), 'created_at'=>$created_at]);
-                    $current_numbers=$current_numbers + 1;
+                    // $current_numbers=$current_numbers + 1;
                     DB::table('rooms')->where('id',$id)->update(['current_numbers'=>$current_numbers]);
                     return redirect('student_xemdk');
                 }
                 else{
                     DB::table('room_registrations')->where([
                         ['mssv',$mssv]
-                    ])->update(['status'=>'Đang chờ']);
-                    $current_numbers = $current_numbers + 1;
+                    ])->update(['status'=>'Đang chờ', 'room_id'=>$id]);
+                    // $current_numbers = $current_numbers + 1;
                     DB::table('rooms')->where('id',$id)->update(['current_numbers'=>$current_numbers]);
                     return redirect('student_xemdk');
                 }
@@ -117,7 +117,7 @@ class StudentController extends Controller
             ['mssv',$mssv]
         ])->value('status');
         $current_numbers = Room::where('id',$room_id)->value('current_numbers');
-        $current_numbers = $current_numbers - 1;
+        // $current_numbers = $current_numbers - 1;
         if ($status == 'Đang chờ') {
             RoomRegistration::where([ ['mssv',$mssv] ])->update(['status'=>"Hủy"]);
             Room::where('id',$room_id)->update(['current_numbers'=>$current_numbers]);
