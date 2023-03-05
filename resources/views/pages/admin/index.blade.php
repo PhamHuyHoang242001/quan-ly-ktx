@@ -14,12 +14,9 @@
                                     <th>{{ __('Tên') }}</th>
                                     <th>{{ __('MSSV') }}</th>
                                     <th>{{ __('Giới tính') }}</th>
-                                    {{-- <th>{{ __('Email') }}</th> --}}
-                                    {{-- <th>{{ __('Số điện thoại') }}</th> --}}
                                     <th>{{ __('Phòng hiện tại') }}</th>
                                     <th>{{ __('Viện') }}</th>
                                     <th>{{ __('Khóa') }}</th>
-                                    {{-- <th>{{ __('Quê quán') }}</th> --}}
                                     <th></th>
                                 </thead>
                                 <tbody>
@@ -28,11 +25,6 @@
                                             <td>{{ $profile->name }}</td>
                                             <td>{{ $profile->mssv }}</td>
                                             <td>{{ $profile->gender }}</td>
-                                            {{-- <td>{{ $profile->email }}</td>
-                                             
-                                            <td>{{ $profile->sdt }}</td> --}}
-                                            
-
                                             <td>
                                                
                                                 @foreach($room_registrations as $room_registration)
@@ -56,14 +48,11 @@
                                                                 @endif
                                                         @endif
                                                 @endforeach
-                                                
-
+                                            
                                             </td>
                                             <td>{{ $profile->vien }}</td>
                                             <td>{{ $profile->khoa }}</td>
-                                            {{-- <td>{{ $profile->quequan }}</td> --}}
                                             <td>
-                                                {{-- <a href="{{ route('admin.users.edit', $profile->id) }}" class="btn btn-primary"><i class="material-icons">edit</i></a> --}}
                                                 <a href="{{ route('admin.users.show', $profile->id) }}" class="btn btn-primary"><i class="material-icons">preview</i></a>
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
                                                         <i class="material-icons">delete</i>

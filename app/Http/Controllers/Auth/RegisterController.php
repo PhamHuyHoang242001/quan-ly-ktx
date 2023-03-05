@@ -81,4 +81,13 @@ class RegisterController extends Controller
         $this->redirectTo = route('dashboard');
         return $this->redirectTo;
     }
+
+    public function checkEmail(String $email){
+        $pattern = "/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/";
+        return preg_match($pattern, $email);
+    }
+    public function checkPassword(String $password){
+        $pattern = "/^.{6,}$/";
+        return preg_match($pattern, $password);
+    }
 }

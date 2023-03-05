@@ -62,6 +62,9 @@ class ManagerController extends Controller
         ])->value('room_id');
         $current_numbers = Room::where('id',$room_id)->value('current_numbers');
         $current_numbers = $current_numbers + 1;
+        // if($current_numbers == 3){
+        //     RoomRegistration::where([['room_id',$room_id], ['status','=','Đang chờ']])->update(['status'=>'Hủy']);
+        // }
         Room::where('id',$room_id)->update(['current_numbers'=>$current_numbers]);
         return redirect()->back();
     }
@@ -89,7 +92,7 @@ class ManagerController extends Controller
     public function manager_ttphong($id) {
         $list = RoomRegistration::where([
             ['room_id', $id],
-            ['status', '!=', 'Hủy']
+            ['status', '=', 'Thành công']
         ])->get();
         $room_id = DB::table('room_registrations')
                  ->select('room_id')
@@ -155,7 +158,5 @@ class ManagerController extends Controller
             'start' => $start,
             'end' => $end
         ]);
-        
-        
     }
 }

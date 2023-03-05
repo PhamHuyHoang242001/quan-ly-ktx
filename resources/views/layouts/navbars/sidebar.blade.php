@@ -52,7 +52,7 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route('student_xemdk') }}">
             <i class="material-icons">perm_identity</i>
-              <p>{{ __('Lịch sử đăng ký') }}</p>
+              <p>{{ __('Trạng thái đăng ký') }}</p>
           </a>
         </li>
         <li class="nav-item">

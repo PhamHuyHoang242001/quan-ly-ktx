@@ -21,7 +21,6 @@ class CreateRoomsTable extends Migration
             $table->integer('current_numbers');
             $table->integer('max_numbers');
             $table->string('gender');
-            $table->timestamps();
         });
     }
 

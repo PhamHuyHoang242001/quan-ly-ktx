@@ -10,13 +10,7 @@
             @if(count($list)==0)
                 <h4>Phòng chưa có sinh viên đăng ký</h4>
             @else
-            <form action=" {{ route('manager_search_day')}}" method="get" >
-                @csrf
-                <input type="date" name="start"/>
-                <input type="date" name="end"/>
-                <input type="hidden" name="room_id" value="{{ $room_id[0]->room_id }}">
-                <button type="submit" class="btn btn-primary" value="search" >Tìm kiếm</button>
-            </form>
+            
             <table class="table table-bordered table-striped datatable" id="table_export">
                 <tr>
                     <th>Mssv</th>

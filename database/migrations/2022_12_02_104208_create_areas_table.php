@@ -17,7 +17,6 @@ class CreateAreasTable extends Migration
             $table->bigIncrements('id');
             $table->string('area_name')->unique();
             $table->integer('area_cost');
-            $table->timestamps();
         });
     }
 

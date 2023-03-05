@@ -4,7 +4,7 @@
         <div class="container">
             <h3 style="">
                 <a href="{{ route('dashboard') }}"><i class="fa fa-arrow-circle-o-left"></i></a>
-                Lịch sử đăng ký
+                Trạng thái đăng ký
             </h3>
             @if(count($lsdk)!=0)
                 <div class="lsdk">
