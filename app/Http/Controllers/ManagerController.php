@@ -62,7 +62,8 @@ class ManagerController extends Controller
         ])->value('room_id');
         $current_numbers = Room::where('id',$room_id)->value('current_numbers');
         $current_numbers = $current_numbers + 1;
-        if($current_numbers == 3){
+        $max_numbers = Room::where('id',$room_id)->value('max_numbers');
+        if($current_numbers == $max_numbers){
             RoomRegistration::where([['room_id',$room_id], ['status','=','Đang chờ']])->update(['status'=>'Hủy', 'updated_at'=>$updated_at]);
         }
         Room::where('id',$room_id)->update(['current_numbers'=>$current_numbers]);

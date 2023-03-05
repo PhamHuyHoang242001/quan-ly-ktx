@@ -60,12 +60,13 @@ class StudentController extends Controller
             ['mssv',$mssv],
             ['status','=','Hủy']
         ])->count();
+        $created_at = Carbon::now('Asia/Ho_Chi_Minh');
         if($std_gender=="" || $mssv == ""){
             return redirect()->back()->with(['flag'=>'danger','message'=>'Vui lòng cập nhật thông tin cá nhân  ']);
         }
         else{
             if($count!=0){
-                return redirect()->back()->with(['flag'=>'danger','message'=>'Sinh viên đã đăng ký ở năm nay']);
+                return redirect()->back()->with(['flag'=>'danger','message'=>'Sinh viên đã đăng ký ở ']);
             }
             elseif($std_gender!=$gender){
                 return redirect()->back()->with(['flag'=>'danger','message'=>'Giới tính không đúng']);
@@ -75,7 +76,6 @@ class StudentController extends Controller
             }
             else{
                 if($count1==0){
-                    $created_at = Carbon::now('Asia/Ho_Chi_Minh');
                     DB::table('room_registrations')->insert(['room_id'=>$id,'mssv'=>$mssv,'name'=>Auth::user()->name, 'status'=>'Đang chờ','cost'=>$area_cost*(13-date('m')), 'created_at'=>$created_at]);
                     // $current_numbers=$current_numbers + 1;
                     DB::table('rooms')->where('id',$id)->update(['current_numbers'=>$current_numbers]);
@@ -84,7 +84,7 @@ class StudentController extends Controller
                 else{
                     DB::table('room_registrations')->where([
                         ['mssv',$mssv]
-                    ])->update(['status'=>'Đang chờ', 'room_id'=>$id]);
+                    ])->update(['status'=>'Đang chờ', 'room_id'=>$id, 'created_at'=>$created_at]);
                     // $current_numbers = $current_numbers + 1;
                     DB::table('rooms')->where('id',$id)->update(['current_numbers'=>$current_numbers]);
                     return redirect('student_xemdk');
