@@ -52,7 +52,7 @@
                                             </td>
                                             <td>{{ $profile->vien }}</td>
                                             <td>{{ $profile->khoa }}</td>
-                                            <td>
+                                            {{-- <td>
                                                 <a href="{{ route('admin.users.show', $profile->id) }}" class="btn btn-primary"><i class="material-icons">preview</i></a>
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basicExampleModal">
                                                         <i class="material-icons">delete</i>
@@ -70,11 +70,12 @@
                                                     </div>
                                                     <div class="modal-body">
                                                         {{ __('Bạn chắc chắn muốn xóa?')}}
+                                                        {{($profile->id)}}
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                         {{--Form delete  --}}
-                                                        <form action="{{ route('admin.users.destroy', $profile->id) }}" method="POST">
+                                                        {{--<form action="{{ route('admin.users.destroy', $profile->id) }}" method="POST">
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger">{{ __('Xóa')}}</button>
@@ -82,7 +83,40 @@
                                                     </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
+                                            <td>
+                                                <a href="{{ route('admin.users.show', $profile->id) }}" class="btn btn-primary"><i class="material-icons">preview</i></a>
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal_{{ $profile->id }}">
+                                                    <i class="material-icons">delete</i>
+                                                </button>
+                                            </td>
+                                            
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="deleteModal_{{ $profile->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Xóa người dùng</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            {{ __('Bạn chắc chắn muốn xóa?')}}
+                                                            {{($profile->id)}}
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            {{--Form delete  --}}
+                                                            <form action="{{ route('admin.users.destroy', $profile->id) }}" method="POST">
+                                                                @csrf
+                                                                @method('DELETE')
+                                                                <button type="submit" class="btn btn-danger">{{ __('Xóa')}}</button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>                                            
                                         </tr>
                                     @endforeach
                                 </tbody>

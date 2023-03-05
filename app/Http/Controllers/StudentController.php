@@ -84,7 +84,7 @@ class StudentController extends Controller
                 else{
                     DB::table('room_registrations')->where([
                         ['mssv',$mssv]
-                    ])->update(['status'=>'Đang chờ', 'room_id'=>$id, 'created_at'=>$created_at]);
+                    ])->update(['status'=>'Đang chờ', 'room_id'=>$id,'created_at'=>$created_at]);
                     // $current_numbers = $current_numbers + 1;
                     DB::table('rooms')->where('id',$id)->update(['current_numbers'=>$current_numbers]);
                     return redirect('student_xemdk');
@@ -128,3 +128,4 @@ class StudentController extends Controller
         
     }
 }
+?>

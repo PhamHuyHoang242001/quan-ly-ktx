@@ -168,8 +168,10 @@ class UsersController extends Controller
         if (Gate::denies('admin')) {
             return back();
         }
-        $user = User::where('id', $id + 1)->first();
         $ttsv = Profile::where('id', $id)->first();
+        $email = $ttsv->email;
+        $user = User::where('email', $email)->first();
+
         $ttsv->delete();
         $user->roles()->detach();
         $user->delete() ?  
