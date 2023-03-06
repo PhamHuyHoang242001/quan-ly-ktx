@@ -16,6 +16,7 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('email');
+            $table->foreign('email')->references('email')->on('users')->onDelete('cascade');
             $table->string('name');
             $table->integer('mssv')->unique();
             $table->string('image')->nullable();
@@ -24,7 +25,6 @@ class CreateProfilesTable extends Migration
             $table->string('vien');
             $table->string('gender');
             $table->string('khoa');
-            $table->timestamps();
         });
     }
 
