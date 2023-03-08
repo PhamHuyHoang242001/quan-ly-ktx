@@ -29,8 +29,6 @@ DB_PASSWORD=Database_password
 Admin: admin@gmail.com   password: 123456789
 User: user@gmail.com     password: 123456789
 
-- Số người hiện tại của phòng 101 khu B1 là 3 chỉ là số liệu để test, không có thông tin sinh viên nào trong này cả
-
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

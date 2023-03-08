@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
         
         
         $rooms = [
-            [101, 1, 3, 3, 'nam'],
+            [101, 1, 0, 3, 'nam'],
             [102, 1, 0, 3, 'nam'],
             [103, 1, 0, 3, 'nam'],
             [104, 1, 0, 3, 'nam'],
