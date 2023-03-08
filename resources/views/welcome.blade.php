@@ -4,7 +4,7 @@
 <div class="container" style="height: auto;">
   <div class="row justify-content-center">
       <div class="col-lg-7 col-md-8">
-          <h1 class="text-white text-center" style = "color: black">{{ __('Welcome to Dormitory Management') }}</h1>
+          <h1 class="text-white text-center" style = "text-shadow: black 0.1em 0.1em 0.2em!important; font-weight: bold!important">{{ __('Welcome to Dormitory Management') }}</h1>
       </div>
   </div>
 </div>
